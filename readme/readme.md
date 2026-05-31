@@ -1,90 +1,72 @@
-# Creative Agency Project Showcase
+# Portfolio Platform
 
-A modern, responsive, and dynamic web application built to showcase past projects for a creative agency. This platform provides a seamless user experience for potential clients and collaborators to browse work, search through projects, and dynamically add new portfolio items in real time.
+A modern creative agency portfolio built with **Next.js** and **TypeScript**.
 
-## 🚀 Core Features
+## What’s included
 
-- **Project Landing Page:** A clean, modern grid layout inspired by professional design mockups to display agency work.
-- **Dynamic Project Creation:** An interactive form allowing users to add new projects (Title, Description, Technologies, and Image URLs) without reloading the page.
-- **Real-time Filter & Search:** Instant filtering capabilities to search through projects by name, description, or technology tags.
-- **Responsive Layout:** Optimized with fluid grid layouts for mobile, tablet, and desktop viewports using Tailwind CSS.
-- **Robust Component Architecture:** Modular React components ensuring clean, maintainable, and reusable code.
+- **Home page** with hero, studio intro, featured work, and contact call to action.
+- **Project grid** with category filtering and featured project highlights.
+- **Dynamic project detail pages** using the Next.js App Router.
+- **Static project data** in `data/projects.json` for easy editing.
 
-## 🛠️ Tech Stack
+## Project structure
 
-- **Frontend Library:** React (Vite)
-- **Styling:** Tailwind CSS (Utility-first CSS Framework)
-- **Icons:** Lucide React
-- **Routing:** React Router DOM
-- **Testing Suite:** Jest & React Testing Library
-
----
-
-## 💻 Getting Started
-
-Follow these steps to set up, run, and test the project locally on your machine.
-
-### Prerequisites
-
-Ensure you have the following installed on your system:
-- **Node.js** (v16.x or higher)
-- **npm** (v7.x or higher)
-
-### Installation
-
-1. **Clone the repository:**
-   ```bash
-   git clone <your-github-repository-url>
-   cd agency-portfolio
-   ```
-
-2. **Install project dependencies:**
-   ```bash
-   npm install
-   ```
-
-3. **Start the local development server:**
-   ```bash
-   npm run dev
-   ```
-   *Open [http://localhost:5173](http://localhost:5173) in your browser to view the application.*
-
----
-
-## 📂 Project Structure
-
-```text
-agency-portfolio/
-├── src/
-│   ├── components/       # Reusable UI elements (Navbar, ProjectCard, ProjectForm)
-│   ├── data/             # Mock initial data (projects.json)
-│   ├── pages/            # Application views (Home/Landing Page, Details Page)
-│   ├── App.jsx           # Main application wrapper and state manager
-│   ├── index.css         # Global styles and Tailwind directives
-│   └── main.jsx          # React application entry point
-├── package.json          # Project metadata and script commands
-├── tailwind.config.js    # Tailwind configuration settings
-└── README.md             # Project documentation
+```
+app/
+  layout.tsx
+  globals.css
+  page.tsx
+  projects/
+    [slug]/
+      page.tsx
+components/
+  Navbar.tsx
+  ProjectCard.tsx
+  ProjectInteractiveElements.tsx
+  PortfolioGrid.tsx
+data/
+  projects.json
+package.json
+tsconfig.json
+next-env.d.ts
 ```
 
----
+## Setup
 
-## 🧪 Testing
+1. Install dependencies:
 
-This project uses **Jest** and **React Testing Library** to ensure component reliability and state management validation.
-
-To execute the test suite, run the following command in your terminal:
 ```bash
-npm run test
+npm install
 ```
 
-### Verified Test Cases:
-- Validates that the project grid renders all initial mockup data successfully.
-- Tests the interactive search input to ensure it accurately filters shown projects.
-- Verifies form behavior, confirming that newly submitted projects are instantly injected into the DOM layout.
+2. Run the development server:
 
----
+```bash
+npm run dev
+```
 
-## 🤝 Contribution & License
+3. Open the app at:
 
-This project was built as a personal project showcase application. Feel free to fork it, customize the styles, or add backend integration. 
+```bash
+http://localhost:3000
+```
+
+## Customize projects
+
+Edit `data/projects.json` to add or update portfolio entries. Each project supports:
+
+- `title`
+- `slug`
+- `category`
+- `tags`
+- `year`
+- `client`
+- `description`
+- `longDescription`
+- `coverImage`
+- `featured`
+
+## Notes
+
+- Tailwind directives were removed from `app/globals.css` because this project currently uses custom global CSS.
+- The project detail route has been corrected to `app/projects/[slug]/page.tsx`.

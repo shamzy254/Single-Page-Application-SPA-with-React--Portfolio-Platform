@@ -5,7 +5,7 @@ import { BackButton, NextProjectButton } from "../../../components/ProjectIntera
 import type { Project } from "../../../components/ProjectCard";
 
 interface Props {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 }
 
 export async function generateStaticParams() {
@@ -13,14 +13,14 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props) {
-  const { slug } = await params;
+  const { slug } = params;
   const project = (projects as Project[]).find((p) => p.slug === slug);
   if (!project) return { title: "Not Found" };
   return { title: `${project.title} — Portfolio Platform`, description: project.description };
 }
 
 export default async function ProjectDetailPage({ params }: Props) {
-  const { slug } = await params;
+  const { slug } = params;
   const project = (projects as Project[]).find((p) => p.slug === slug);
   if (!project) notFound();
 
